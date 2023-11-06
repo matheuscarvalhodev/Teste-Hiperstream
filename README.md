@@ -26,10 +26,6 @@ Este projeto é uma aplicação de linha de comando em C# que lê um arquivo de 
 
 Optei por usar a linguagem C# devido à sua forte tipagem estática, facilidade de desenvolvimento e suporte à criação de aplicativos de linha de comando. Além disso, a linguagem C# é amplamente utilizada na indústria e possui uma grande comunidade de desenvolvedores, o que facilita a resolução de problemas e a colaboração. E obviamente, por ser a linguagem utilizada pela empresa, dessa forma, mostrando dominio na linguagem.
 
-## Entrega
-
-Você pode encontrar o código-fonte deste projeto no link do repositorio [repositório do GitHub](https://github.com/matheuscarvalhodev/Teste-Hiperstream). Se quiser, compartilhe o link do projeto para que possa ajudar outros Devs!
-
 ## Instruções para Execução
 
 Para executar este projeto, siga as etapas abaixo:
