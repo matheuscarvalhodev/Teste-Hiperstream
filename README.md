@@ -28,7 +28,7 @@ Optei por usar a linguagem C# devido à sua forte tipagem estática, facilidade 
 
 ## Entrega
 
-Você pode encontrar o código-fonte deste projeto em nosso [repositório do GitHub](https://github.com/matheuscarvalhodev/Teste-Hiperstream). Também fornecemos um arquivo compactado contendo o projeto completo para facilitar o acesso.
+Você pode encontrar o código-fonte deste projeto no link do repositorio [repositório do GitHub](https://github.com/matheuscarvalhodev/Teste-Hiperstream). Se quiser, compartilhe o link do projeto para que possa ajudar outros Devs!
 
 ## Instruções para Execução
 
