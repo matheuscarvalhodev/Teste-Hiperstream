@@ -53,7 +53,7 @@ namespace TesteHiperstream.Aplicacao
 
             try
             {
-
+                Directory.CreateDirectory(outputPath);
                 File.WriteAllLines(Path.Combine(outputPath, nomeArquivo), linhasCsv);
             }
             catch (Exception ex)
