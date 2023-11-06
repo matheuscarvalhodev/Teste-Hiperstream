@@ -5,23 +5,16 @@ namespace TesteHiperstream.Aplicacao
 {
     public class GravarCliente : IGravarClienteRepository
     {
-        private readonly string projectPath;
-
-        public GravarCliente()
-        {
-            projectPath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
-        }
-
-        public void GravarClienteCsv(List<Cliente> listaCliente)
+        public void GravarClienteCsv(List<Cliente> listaCliente, string outputPath)
         {
             try
             {
                 var faturas = CriaFatura(listaCliente);
 
-                SalvarFaturasEmArquivo(faturas, "ClienteComValorZerado.csv", c => c.ValorFatura == 0);
-                SalvarFaturasEmArquivo(faturas, "FaturasComAteSeisPaginas.csv", c => c.NumeroPaginas <= 6 && c.ValorFatura != 0);
-                SalvarFaturasEmArquivo(faturas, "FaturasComAteDozePaginas.csv", c => c.NumeroPaginas > 6 && c.NumeroPaginas <= 12 && c.ValorFatura != 0);
-                SalvarFaturasEmArquivo(faturas, "FaturasComMaisDozePaginas.csv", c => c.NumeroPaginas > 12 && c.ValorFatura != 0);
+                SalvarFaturasEmArquivo(faturas, "ClienteComValorZerado.csv", c => c.ValorFatura == 0, outputPath);
+                SalvarFaturasEmArquivo(faturas, "FaturasComAteSeisPaginas.csv", c => c.NumeroPaginas <= 6 && c.ValorFatura != 0, outputPath);
+                SalvarFaturasEmArquivo(faturas, "FaturasComAteDozePaginas.csv", c => c.NumeroPaginas > 6 && c.NumeroPaginas <= 12 && c.ValorFatura != 0, outputPath);
+                SalvarFaturasEmArquivo(faturas, "FaturasComMaisDozePaginas.csv", c => c.NumeroPaginas > 12 && c.ValorFatura != 0, outputPath);
             }
             catch (Exception ex)
             {
@@ -44,17 +37,17 @@ namespace TesteHiperstream.Aplicacao
             return fatura;
         }
 
-        private void SalvarFaturasEmArquivo(List<Fatura> faturas, string nomeArquivo, Func<Fatura, bool> filtro)
+        private void SalvarFaturasEmArquivo(List<Fatura> faturas, string nomeArquivo, Func<Fatura, bool> filtro, string ouputPath)
         {
-            string outputPath = Path.Combine(projectPath, "Data", "Output");
+            string path = Path.Combine(ouputPath, "Data", "Output");
             var faturasFiltradas = faturas.Where(filtro);
             var linhasCsv = faturasFiltradas.Select(cliente => (string)cliente).ToList();
             linhasCsv.Insert(0, "NomeCliente,EnderecoCompleto,ValorFatura,NumeroPaginas");
 
             try
             {
-                Directory.CreateDirectory(outputPath);
-                File.WriteAllLines(Path.Combine(outputPath, nomeArquivo), linhasCsv);
+                Directory.CreateDirectory(path);
+                File.WriteAllLines(Path.Combine(path, nomeArquivo), linhasCsv);
             }
             catch (Exception ex)
             {

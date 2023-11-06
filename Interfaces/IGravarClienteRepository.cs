@@ -9,6 +9,6 @@ namespace TesteHiperstream.Interfaces
 {
     public interface IGravarClienteRepository
     {
-        void GravarClienteCsv(List<Cliente> listaCliente);
+        void GravarClienteCsv(List<Cliente> listaCliente, string outputPath);
     }
 }
